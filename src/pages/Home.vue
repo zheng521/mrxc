@@ -1,16 +1,17 @@
 <template lang="html">
   <div class="home">
-    <h3>首页</h3>
+    <v-header></v-header>
   </div>
 </template>
 
 <script>
+import VHeader from '@/components/Header'
 export default {
+  components: {
+    VHeader
+  }
 }
 </script>
 
 <style lang="scss">
-  .home {
-    width: 640px;
-  }
 </style>

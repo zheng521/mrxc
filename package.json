@@ -14,10 +14,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "eslint": "^4.12.1",
     "node-sass": "^4.7.2",
     "postcss-px2rem": "^0.3.0",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
+    "vue-awesome-swiper": "^3.0.6",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
