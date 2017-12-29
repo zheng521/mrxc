@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 
 import './util/rem'
+import './util/mint'
 
 Vue.config.productionTip = false
 
