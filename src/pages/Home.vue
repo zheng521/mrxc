@@ -12,6 +12,7 @@ import VHeader from '@/components/header'
 import TopSlider from '@/components/topSlider'
 import TopNav from '@/components/topNav'
 import MrRecommend from '@/components/recommend'
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -30,6 +31,20 @@ export default {
     TopSlider,
     TopNav,
     MrRecommend
+  },
+  mounted () {
+    this.featchData()
+  },
+  methods: {
+    featchData () {
+      axios.get('http://localhost:3000/posts').then((res) => {
+        console.log(res)
+      })
+      // this.api.getEntrance().then((res) => {
+      //   console.log(123)
+      //   // console.log(res)
+      // })
+    }
   }
 }
 </script>

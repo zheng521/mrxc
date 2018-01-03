@@ -6,9 +6,10 @@ import router from './router'
 
 import './util/rem'
 import './util/mint'
+import api from './fetch/api'
 
 Vue.config.productionTip = false
-
+Vue.use(api)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
