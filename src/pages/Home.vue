@@ -1,9 +1,11 @@
 <template lang="html">
   <div class="home">
-    <v-header></v-header>
+    <v-header>
+      <h3 slot="header">首页</h3>
+    </v-header>
     <top-slider :ts="topSlider"></top-slider>
     <top-nav></top-nav>
-    <mr-recommend></mr-recommend>
+    <mr-recommend :rc="recommend"></mr-recommend>
   </div>
 </template>
 
@@ -12,18 +14,14 @@ import VHeader from '@/components/header'
 import TopSlider from '@/components/topSlider'
 import TopNav from '@/components/topNav'
 import MrRecommend from '@/components/recommend'
-import axios from 'axios'
+import { reduce } from 'lodash'
+
 export default {
   data () {
     return {
-      topSlider: [{
-        link: 'http://www.baidu.com',
-        image_url: 'http://pic.sc.chinaz.com/files/pic/pic9/201511/apic16248.jpg'
-      },
-      {
-        link: 'http://www.baidu.com',
-        image_url: 'http://pic.sc.chinaz.com/files/pic/pic9/201511/apic16248.jpg'
-      }]
+      entrance: {},
+      topSlider: [],
+      recommend: []
     }
   },
   components: {
@@ -37,13 +35,18 @@ export default {
   },
   methods: {
     featchData () {
-      axios.get('http://localhost:3000/posts').then((res) => {
-        console.log(res)
+      this.api.getEntrance().then((res) => {
+        this.entrance = this.toMap(res.data.data, 'category', 'items')
+        console.log(this.entrance)
+        this.topSlider = this.entrance.advertisements
+        this.recommend = this.entrance.suggests
       })
-      // this.api.getEntrance().then((res) => {
-      //   console.log(123)
-      //   // console.log(res)
-      // })
+    },
+    toMap (data, name, value) {
+      return reduce(data, function (acc, item) {
+        acc[item[name]] = item[value]
+        return acc
+      }, {})
     }
   }
 }

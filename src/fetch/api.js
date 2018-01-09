@@ -86,7 +86,7 @@ const instance = axios.create({
 var api = {
   // Frontend Moudule
   // login: (mobile, code) => instance.post('/v1/login', { mobile, code }),
-  getEntrance: () => instance.get('/posts'),
+  getEntrance: () => instance.get('/api/entrance'),
 }
 
 api.install = function (Vue, options) {

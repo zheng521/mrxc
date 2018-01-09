@@ -1,17 +1,17 @@
 <template lang="html">
   <div class="recommend">
 	<h3 class="recommend-title">推荐</h3>
-	<div class="recommend-list">
-  	  <h4>推荐的标题推荐的标题推荐的标题</h4>
+	<div class="recommend-list" v-for="item in rc">
+  	  <h4>{{item.title}}</h4>
 	  <div class="recommend-list-info">
 		<div class="list-info-img">
-		  <img src="#">
+		  <img :src="item.image_url">
 		</div>
 		<div class="list-info-main">
-		  <p class="info-main-intro">信息信息信息信息信息信息系信息学</p>
+		  <p class="info-main-intro">{{item.desc}}</p>
 		  <div class="info-main-bottom">
-			<span>4920浏览</span>
-			<span>作者是: 狗蛋</span>
+			<span>浏览量:{{item.pv}}</span>
+			<span>作者是: {{item.author}}</span>
 		  </div>
 		</div>
 	  </div>
@@ -21,6 +21,7 @@
 
 <script>
 export default {
+  props: ['rc']
 }
 </script>
 
@@ -72,7 +73,7 @@ export default {
 			height: 160px;
 		  }
 		  .info-main-bottom {
-			font-size: 24px;
+			font-size: 22px;
 			span {
 			  color: #666;
 			  display: inline-block;

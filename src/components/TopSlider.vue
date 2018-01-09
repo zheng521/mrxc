@@ -2,7 +2,8 @@
 <div class="top-slider">
   <swiper :options="swiperOption">
     <swiper-slide :key="idx" v-for="(item, idx) in ts">
-      <a :href="item.link">
+      <a :href="item.url">
+        <!-- <span>{{item.desc}}</span> -->
         <img v-lazy="item.image_url"/>
       </a>
     </swiper-slide>
