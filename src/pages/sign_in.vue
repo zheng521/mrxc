@@ -4,9 +4,9 @@
 	  <h3 slot="header">登录</h3>
 	</v-header>
 	<div class="login-main">
-	  <mt-field class="login-field" placeholder="登录邮箱" type="email"></mt-field>
-	  <mt-field class="login-field" placeholder="密码" type="password"></mt-field>
-	  <mt-button class="login-button" type="primary">登录</mt-button>
+	  <mt-field class="login-field" placeholder="用户名" v-model="username"></mt-field>
+	  <mt-field class="login-field" placeholder="密码" type="password" v-model="password"></mt-field>
+	  <mt-button class="login-button" type="primary" @click="login()">登录</mt-button>
 	  <mt-button class="login-button" type="danger">注册</mt-button>
 	</div>
   </div>
@@ -15,8 +15,24 @@
 <script>
 import VHeader from '@/components/header'
 export default {
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   components: {
     VHeader
+  },
+  methods: {
+    login () {
+      let paramsObj = { username: this.username, password: this.password }
+      this.api.mrLogin(paramsObj).then((res) => {
+        if (res.data.code === 200) {
+          this.$router.push({name: 'Home'})
+        }
+      })
+    }
   }
 }
 </script>

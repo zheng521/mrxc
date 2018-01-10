@@ -13,7 +13,7 @@ var store = null
 const instance = axios.create({
   baseURL: process.env.API_ROOT,
   timeout: 15000,
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json'}
+  headers: { 'Content-Type': 'application/json', 'Accept': 'application/json'}
 })
 
 // Add a request interceptor
@@ -87,6 +87,7 @@ var api = {
   // Frontend Moudule
   // login: (mobile, code) => instance.post('/v1/login', { mobile, code }),
   getEntrance: () => instance.get('/api/entrance'),
+  mrLogin: (params) => instance.post('/api/mr_login', params),
 }
 
 api.install = function (Vue, options) {
