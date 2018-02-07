@@ -1,13 +1,13 @@
 <template lang="html">
   <div class="login">
 	<v-header>
-	  <h3 slot="header">登录</h3>
+	  <h3 slot="header">注册</h3>
 	</v-header>
 	<div class="login-main">
 	  <mt-field class="login-field" placeholder="用户名" v-model="username"></mt-field>
 	  <mt-field class="login-field" placeholder="密码" type="password" v-model="password"></mt-field>
-	  <mt-button class="login-button" type="primary" @click="login()">登录</mt-button>
-	  <mt-button class="login-button" type="danger">注册</mt-button>
+	  <mt-button class="login-button" type="primary" @click="reg()">注册</mt-button>
+	  <mt-button class="login-button" type="danger">登录</mt-button>
 	</div>
   </div>
 </template>
@@ -25,14 +25,10 @@ export default {
     VHeader
   },
   methods: {
-    login () {
+    reg () {
       let paramsObj = { username: this.username, password: this.password }
-      this.api.mrLogin(paramsObj).then((res) => {
+      this.api.mrReg(paramsObj).then((res) => {
         if (res.data.code === 200) {
-          cookie.set('accessToken', res.data.access_token, { path: '/' })
-          window.localStorage.user = JSON.stringify(user)
-          this.$store.dispatch('setUserInfo', paramsObj)
-          console.log(this.$store)
           this.$router.push({name: 'Home'})
         }
       })

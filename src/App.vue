@@ -4,15 +4,18 @@
       <div class="sidebar-wrapper">
         <div class="sidebar">
           <nav class="sidebar-nav">
-            <a class="sidebar-nav-item" href="#">首页</a>
+            <router-link class="sidebar-nav-item" @click.native="removeClass()" :to="{name: 'Home'}">首页</router-link>
             <a class="sidebar-nav-item" href="#">页面1</a>
             <a class="sidebar-nav-item" href="#">页面2</a>
             <a class="sidebar-nav-item" href="#">页面3</a>
           </nav>
           <div class="sidebar-item sidebar-footer">
-            <p>
-              <a href="/users/sign_in">注册/登录</a>
-              <a href="/users/sign_up" style="display: none;"> / 注册</a>
+            <p v-if="!signed">
+              <router-link @click.native="removeClass()" :to="{name: 'SignIn'}">登录</router-link>
+              <router-link @click.native="removeClass()" :to="{name: 'SignUp'}"> / 注册</router-link>
+            </p>
+            <p v-else>
+              <router-link @click.native="removeClass()" :to="{name: 'SignIn'}">个人中心</router-link>
             </p>
           </div>
         </div>
@@ -26,8 +29,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'app',
+  computed: {
+    ...mapState({
+      signed: state => state.signed
+    })
+  },
   methods: {
     removeClass () {
       this.removeBodyClass('open')

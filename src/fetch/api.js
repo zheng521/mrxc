@@ -88,6 +88,7 @@ var api = {
   // login: (mobile, code) => instance.post('/v1/login', { mobile, code }),
   getEntrance: () => instance.get('/api/entrance'),
   mrLogin: (params) => instance.post('/api/mr_login', params),
+  mrReg: (params) => instance.post('/api/mr_signup', params),
 }
 
 api.install = function (Vue, options) {

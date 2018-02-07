@@ -19,6 +19,7 @@
   padding: 20px;
   background: url('./assets/images/BgContainer.png') no-repeat center bottom;
   background-size: cover;
+  display: none;
 }
 
 .wrapper .sidebar-mask {
@@ -71,6 +72,7 @@
 }
 .open .sidebar-wrapper{
   visibility: visible;
+  display: block;
 }
 .open .wrap {
   background: #f2f2f4;
