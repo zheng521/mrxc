@@ -4,9 +4,11 @@ import Home from '@/pages/home'
 import SignIn from '@/pages/sign_in'
 import SignUp from '@/pages/sign_up'
 
+import store from '@/store'
+
 Vue.use(Router)
 
-export default new Router({
+var router = new Router({
   mode: 'history',
   routes: [
     { path: '/', name: 'Home', component: Home },
@@ -14,3 +16,10 @@ export default new Router({
     { path: '/users/sign_up', name: 'SignUp', component: SignUp }
   ]
 })
+
+if (window.localStorage.user) {
+  store.dispatch('setUserInfo', JSON.parse(window.localStorage.user))
+// store.dispatch('setUserInfo', JSON.parse(window.localStorage.user))
+}
+
+export default router

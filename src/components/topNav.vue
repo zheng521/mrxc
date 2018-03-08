@@ -6,7 +6,7 @@
 	  <div class="nav-list-item">美景</div>
 	</div>
 	<div class="top-nav-list">
-	  <div class="nav-list-item">美景</div>
+	  <div class="nav-list-item">美食</div>
 	  <div class="nav-list-item">聚餐</div>
 	  <div class="nav-list-item">种草</div>
 	</div>

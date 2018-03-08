@@ -14,6 +14,8 @@
 
 <script>
 import VHeader from '@/components/header'
+import cookie from '@/util/cookie'
+
 export default {
   data () {
     return {
@@ -29,10 +31,10 @@ export default {
       let paramsObj = { username: this.username, password: this.password }
       this.api.mrLogin(paramsObj).then((res) => {
         if (res.data.code === 200) {
-          cookie.set('accessToken', res.data.access_token, { path: '/' })
-          window.localStorage.user = JSON.stringify(user)
+          cookie.set('accessToken', res.data.token, { path: '/' })
+          window.localStorage.user = JSON.stringify(paramsObj)
           this.$store.dispatch('setUserInfo', paramsObj)
-          console.log(this.$store)
+          // console.log(this.$store)
           this.$router.push({name: 'Home'})
         }
       })
